@@ -19,12 +19,13 @@ function getTimes(lat, long) {
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             sunTimes = JSON.parse(xhr.responseText);
-            // TODO - call the function loadSunTimes below
-            //
+            // call the function loadSunTimes //
+            loadSunTimes();
+            
         }
     }
     //TODO - construct endpoint url below
-    url = `CREATE API CALL HERE`;
+    url = 'https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400&formatted=0';
     xhr.open('GET', url);
     xhr.send();
 }
@@ -55,6 +56,7 @@ function loadSunTimes(sunTimes) {
     let output = '<h4 style="color: blue;">All times are local to your current location:</h4>';
     output += '<hr>';
 
+    
     //
     //TODO - CREATE OUTPUT STRING HERE
     //
