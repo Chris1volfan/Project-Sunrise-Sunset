@@ -1,3 +1,16 @@
+//-----------------------------------
+//Chris Brown
+//WEBT 2300
+//Section 01
+//Projece-Sunrise-Sunset
+//Fall 2023
+//-----------------------------------
+/*
+Sumary: The program uses functions to allow users to select from four locations
+to call the API: https://api.sunrise-sunset.org to display the following 
+for selected location: Sunrise Sunset times, Day Length, and
+Civil/Nautical/Astronomical Twilight Begin and End times.
+*/
 const sun = document.getElementById('sun');
 
 function getTimes(lat, long) {
