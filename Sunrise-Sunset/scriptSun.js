@@ -2,7 +2,7 @@
 //Chris Brown
 //WEBT 2300
 //Section 01
-//Projece-Sunrise-Sunset
+//Projecet-Sunrise-Sunset
 //Fall 2023
 //-----------------------------------
 /*
@@ -11,8 +11,10 @@ to call the API: https://api.sunrise-sunset.org to display the following
 for selected location: Sunrise Sunset times, Day Length, and
 Civil/Nautical/Astronomical Twilight Begin and End times.
 */
+///declare variable to work with html
 const sun = document.getElementById('sun');
 
+// A function to get the data from API and call function to load data to HTML
 function getTimes(lat, long) {
 
     var xhr = new XMLHttpRequest();
@@ -24,16 +26,18 @@ function getTimes(lat, long) {
             
         }
     }
-    //TODO - construct endpoint url below
+    //constructed endpoint url below
     url = "https://api.sunrise-sunset.org/json?lat=lat=" + lat + "&lng=" + long + "&formatted=0";
+    //GET call to API
     xhr.open('GET', url);
     xhr.send();
 }
 
+//EventListnener to determine the city selection from HTML
 document.querySelector('#suntimes').addEventListener("change", function() {
     
     selectCity = this.value;
-
+//case select based on HTML name Calls function passes lat, long cordinates
     switch (selectCity) {
         case "kingsport":
             getTimes(36.538960, -82.540848);
@@ -50,6 +54,7 @@ document.querySelector('#suntimes').addEventListener("change", function() {
       }
 });
 
+// A function to load the API data to the HTML page to include message about nature of data.
 function loadSunTimes(sunTimes) {
 
     
@@ -99,7 +104,7 @@ function loadSunTimes(sunTimes) {
     output += "<hr>";
 
 
-
+//loads the HTML to div
     sun.innerHTML = output;
 
 }
