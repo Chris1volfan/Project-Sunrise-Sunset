@@ -20,12 +20,12 @@ function getTimes(lat, long) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             sunTimes = JSON.parse(xhr.responseText);
             // call the function loadSunTimes //
-            loadSunTimes();
+            loadSunTimes(sunTimes);
             
         }
     }
     //TODO - construct endpoint url below
-    url = 'https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400&formatted=0';
+    url = "https://api.sunrise-sunset.org/json?lat=lat=" + lat + "&lng=" + long + "&formatted=0";
     xhr.open('GET', url);
     xhr.send();
 }
@@ -56,11 +56,18 @@ function loadSunTimes(sunTimes) {
     let output = '<h4 style="color: blue;">All times are local to your current location:</h4>';
     output += '<hr>';
 
+    let sunriseTime = new Date (sunTimes.results.sunrise);
+    output += `<p style =" color: red "; ">Sunrise: ${sunriseTime.toLocaleString()}`;
+    output += "<br>";
+
+    let sunsetTime = new Date (sunTimes.results.sunset);
+    output += 'Sunset:' + sunsetTime.toLocaleString() + "</p>";
     
-    //
-    //TODO - CREATE OUTPUT STRING HERE
-    //
-    
+    output += "<hr>";
+
+    let dayLength = new Date(sunTimes.results.day_length * 1000).toISOString().substring(11, 16)
+    output += '<p style =" color: green;"; ">Day Length: ' + dayLength + ' hr:ss  </p>';
+
     sun.innerHTML = output;
 
-};
+}
