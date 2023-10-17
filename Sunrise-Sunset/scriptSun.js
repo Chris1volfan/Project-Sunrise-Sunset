@@ -61,12 +61,44 @@ function loadSunTimes(sunTimes) {
     output += "<br>";
 
     let sunsetTime = new Date (sunTimes.results.sunset);
-    output += 'Sunset:' + sunsetTime.toLocaleString() + "</p>";
+    output += `Sunset: ${ sunsetTime.toLocaleString()} </p>`;
     
     output += "<hr>";
 
     let dayLength = new Date(sunTimes.results.day_length * 1000).toISOString().substring(11, 16)
     output += '<p style =" color: green;"; ">Day Length: ' + dayLength + ' hr:ss  </p>';
+
+    output += "<hr>";
+
+    let civilTwilightBegin = new Date (sunTimes.results.civil_twilight_begin);
+    output += `<p style =" color: purple " ">Civil Twilight Begin: ${civilTwilightBegin.toLocaleString()}`;
+    output += "<br>";
+
+    let civilTwilightEnd = new Date (sunTimes.results.civil_twilight_end);
+    output += 'Civil Twilight End:' + civilTwilightEnd.toLocaleString() + "</p>";
+
+    output += "<hr>";
+
+    let nauticalTwilightBegin = new Date (sunTimes.results.nautical_twilight_begin);
+    output += `<p style =" color: orange " ">Nautical Twilight Begin: ${nauticalTwilightBegin.toLocaleString()}`;
+    output += "<br>";
+
+    let nauticalTwilightEnd = new Date (sunTimes.results.nautical_twilight_end);
+    output += 'Nautical Twilight End:' + nauticalTwilightEnd.toLocaleString() + "</p>";
+
+    output += "<hr>";
+
+    let astronomicalTwilightBegin = new Date (sunTimes.results.astronomical_twilight_begin);
+    output += `<p style =" color: black " ">Astronomical Twilight Begin: ${astronomicalTwilightBegin.toLocaleString()}`;
+    output += "<br>";
+
+    let astronomicalTwilightEnd = new Date (sunTimes.results.astronomical_twilight_end);
+    output += 'Astronomical Twilight End:' + astronomicalTwilightEnd.toLocaleString() + "</p>";
+
+
+    output += "<hr>";
+
+
 
     sun.innerHTML = output;
 
